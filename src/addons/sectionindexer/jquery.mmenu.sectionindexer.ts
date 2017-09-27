@@ -7,8 +7,8 @@
 
 (function( $ ) {
 
-	var _PLUGIN_ = 'mmenu',
-		_ADDON_  = 'sectionIndexer';
+	const _PLUGIN_ = 'mmenu';
+	const _ADDON_  = 'sectionIndexer';
 
 
 	$[ _PLUGIN_ ].addons[ _ADDON_ ] = {
@@ -97,7 +97,7 @@
 							//	Scroll onMouseOver
 							this.$indexer
 								.children()
-								.on( _e.mouseover + '-' + _ADDON_ + ' ' + _c.touchstart + '-' + _ADDON_,
+								.on( _e.mouseover + '-' + _ADDON_ + ' ' + _e.touchstart + '-' + _ADDON_,
 									function( e )
 									{
 										var lttr = $(this).attr( 'href' ).slice( 1 ),
@@ -150,7 +150,7 @@
 			_e = $[ _PLUGIN_ ]._e;
 
 			_c.add( 'indexer hasindexer' );
-			_e.add( 'mouseover touchstart' );
+			_e.add( 'mouseover' );
 		},
 		
 		//	clickAnchor: prevents default behavior when clicking an anchor

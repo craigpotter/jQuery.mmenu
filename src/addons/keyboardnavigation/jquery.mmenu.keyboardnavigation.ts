@@ -7,8 +7,8 @@
 
 (function( $ ) {
 
-	var _PLUGIN_ = 'mmenu',
-		_ADDON_  = 'keyboardNavigation';
+	const _PLUGIN_ = 'mmenu';
+	const _ADDON_  = 'keyboardNavigation';
 
 
 	$[ _PLUGIN_ ].addons[ _ADDON_ ] = {
@@ -16,6 +16,13 @@
 		//	setup: fired once per menu
 		setup: function()
 		{
+			//	Keyboard navigation on touchscreens opens the virtual keyboard :/
+			if ( $[ _PLUGIN_ ].support.touch )
+			{
+				return;
+			}
+
+
 			var that = this,
 				opts = this.opts[ _ADDON_ ],
 				conf = this.conf[ _ADDON_ ];
