@@ -7,8 +7,8 @@
 
 (function( $ ) {
 
-	var _PLUGIN_ = 'mmenu',
-		_ADDON_  = 'offCanvas';
+	const _PLUGIN_ = 'mmenu';
+	const _ADDON_  = 'offCanvas';
 
 
 	$[ _PLUGIN_ ].addons[ _ADDON_ ] = {
@@ -51,9 +51,6 @@
 			}
 
 
-			glbl.$allMenus = ( glbl.$allMenus || $() ).add( this.$menu );
-
-
 			//	Setup the menu
 			this.vars.opened = false;
 			
@@ -84,6 +81,8 @@
 			this.bind( 'initMenu:after',
 				function()
 				{
+					var that = this;
+
 					//	Setup the page
 					this.setPage( glbl.$page );
 
@@ -107,7 +106,12 @@
 						var id = this._getOriginalMenuId();
 						if ( id && id == hash.slice( 1 ) )
 						{
-							this.open();
+							setTimeout(
+								function()
+								{
+									that.open();
+								},1000
+							);
 						}
 					}
 				}
@@ -417,7 +421,8 @@
 
 	$[ _PLUGIN_ ].prototype.closeAllOthers = function()
 	{
-		glbl.$allMenus
+		glbl.$body
+			.find( '.' + _c.menu + '.' + _c.offcanvas )
 			.not( this.$menu )
 			.each(
 				function()

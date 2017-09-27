@@ -7,8 +7,8 @@
 
 (function( $ ) {
 
-	var _PLUGIN_ = 'mmenu',
-		_ADDON_  = 'searchfield';
+	const _PLUGIN_ = 'mmenu';
+	const _ADDON_  = 'searchfield';
 
 
 	$[ _PLUGIN_ ].addons[ _ADDON_ ] = {
@@ -189,13 +189,13 @@
 								var $rpnl = this.$pnls.children( '.' + _c.resultspanel );
 								if ( !$rpnl.length )
 								{
-									$rpnl = $( '<div class="' + _c.panel + ' ' + _c.resultspanel + ' ' + _c.noanimation + ' ' + _c.hidden + '" />' )
+									$rpnl = $( '<div class="' + _c.resultspanel + ' ' + _c.noanimation + ' ' + _c.hidden + '" />' )
 										.appendTo( this.$pnls )
 										.append( '<div class="' + _c.navbar + ' ' + _c.hidden + '"><a class="' + _c.title + '">' + $[ _PLUGIN_ ].i18n( opts.resultsPanel.title ) + '</a></div>' )
 										.append( '<ul class="' + _c.listview + '" />' )
 										.append( this.$pnls.find( '.' + _c.noresultsmsg ).first().clone() );
 
-									this.initPanels( $rpnl );
+									this._initPanel( $rpnl );
 								}
 							}
 
@@ -219,7 +219,7 @@
 										//	Not in a panel
 										else
 										{
-											$pnls = $('.' + _c.panel, that.pnls);
+											$pnls = that.$pnls.find( '.' + _c.panel );
 											$panl = that.$menu;
 										}
 
@@ -316,8 +316,7 @@
 											{
 												if ( query === '' )
 												{
-													this.closeAllPanels();
-													this.openPanel( this.$pnls.children( '.' + _c.subopened ).last() );
+													this.closeAllPanels( this.$pnls.children( '.' + _c.subopened ).last() );
 												}
 												else
 												{
@@ -382,7 +381,7 @@
 																}
 																else if ( !inPanel )
 																{
-																	if ( $panl.hasClass( _c.opened ) )
+																	if ( $panl.hasClass( _c.opened ) || $panl.hasClass( _c.subopened ) )
 																	{
 																		//	Compensate the timeout for the opening animation
 																		setTimeout(
