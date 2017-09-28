@@ -3,7 +3,8 @@
    "umd"	: true,
    "files"	: {
       "core"      : [ "oncanvas", "offcanvas", "scrollbugfix", "screenreader" ],
-      "addons"    : [ "navbars", "fixedelements", "drag"],
-      "extensions": [ "themes", "positioning" ]
+      "addons"    : [ "navbars", "fixedelements" ],
+      "extensions": [ "borderstyle", "positioning" ],
+      "wrappers"	: [ "olark" ]
    }
 }

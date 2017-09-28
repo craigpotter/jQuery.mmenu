@@ -4,11 +4,22 @@ $mm_fontSize		: 15px;
 $mm_backgroundColor  : #485762; 
 $mm_textColor: #ffffff; 
 $mm_dimmedTextColor: #ffffff;
-$mm_highlightedBackgroundColor: #e02f60; 
+$mm_highlightedBackgroundColor: #96bcd3; 
 $mm_emphasizedBackgroundColor : $mm_highlightedBackgroundColor;
 $mm_navbarColor : #ffffff;
 
 
+
+$mm_backgroundColor: #173350;
+
+
+$mm_borderColor: #fff;
+$mm_navbarColor: #fff;
+$mm_textColor: #fff;
 a.mm-next{
-	background: $mm_highlightedBackgroundColor !important;
+	background: $mm_backgroundColor !important;
 } 
+
+.hasIcon > a.mm-next{
+	background: $mm_highlightedBackgroundColor !important;
+}
